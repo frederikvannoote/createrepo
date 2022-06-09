@@ -1,0 +1,20 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+on: 
+  workflow_dispatch:
+    inputs:
+      project:
+        description: 'Project'     
+        required: true
+      reponame:
+        description: 'Repository name'     
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run a one-line script
+        run: echo ${{ github.event.inputs.project }} ${{ github.event.inputs.reponame }}
