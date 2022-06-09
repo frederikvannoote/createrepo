@@ -20,7 +20,6 @@ jobs:
         run: echo ${{ github.event.inputs.project }} ${{ github.event.inputs.reponame }}
         
       - name: Create repository
-        run: gh api --method POST -H "Accept: application/vnd.github.v3+json" /orgs/frederikvannoote/repos -f name='${{ github.event.inputs.reponame }}' -F private=false -F has_issues=true -F has_projects=true -F has_wiki=true
+        run: gh repo create ${{ github.event.inputs.reponame }} --public --disable-wiki --disable-issues
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          ISSUE: ${{ github.event.issue.html_url }}
